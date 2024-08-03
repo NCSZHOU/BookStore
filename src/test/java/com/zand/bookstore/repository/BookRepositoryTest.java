@@ -22,6 +22,7 @@ class BookRepositoryTest {
 
     private final String bookID = "E38-0542-9802";
 
+    @Test
     void whenFindAllAvailableBooks_thenReturnBooks() {
         List<Book> bookList = bookRepository.findAllAvailableBooks();
         Assertions.assertNotEquals(0, bookList.size());
@@ -43,8 +44,7 @@ class BookRepositoryTest {
     @Rollback(true)
     @Test
     void whenUpdateBookStock_thenStockWasUpdated() {
-//        bookRepository.updateBookStock("E38-0542-9802", 40);
-//        String quantity = bookRepository.findBookQuantityByBookId(userId);
-//        Assertions.assertEquals(40, Integer.parseInt(quantity));
+        int status = bookRepository.updateBookStock("E38-0542-9802", 2);
+        Assertions.assertNotEquals(0, status);
     }
 }

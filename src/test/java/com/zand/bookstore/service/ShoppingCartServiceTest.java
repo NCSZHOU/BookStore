@@ -1,6 +1,7 @@
 package com.zand.bookstore.service;
 
 import com.zand.bookstore.common.CommonResponse;
+import com.zand.bookstore.dao.BookDao;
 import com.zand.bookstore.repository.BookRepository;
 import com.zand.bookstore.repository.CategoryRepository;
 import com.zand.bookstore.repository.ShoppingCartRepository;
@@ -16,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -50,11 +52,18 @@ class ShoppingCartServiceTest {
     @Test
     void whenCheckout_thenReturnTotalAmount() {
         double totalAmount = TestDataBooks.getTestBooksTotalAmount();
+        Mockito.when(bookRepository.findBookQuantityByBookId(Mockito.any())).thenReturn("10000000");
         CommonResponse commonResponse = shoppingCartService.checkout(userId, TestDataBooks.generateBookDaoList());
         Assertions.assertEquals(totalAmount, commonResponse.getData());
     }
 
     @Test
-    void retrieveCartByUserId() {
+    void whenRetrieveCartByUserId_thenReturnShoppingCart() {
+        Mockito.when(shoppingCartRepository.findAllByUserId(userId)).thenReturn(TestDataBooks.getTestShoppingCartData());
+        Mockito.when(bookRepository.findBookByBookId(Mockito.any())).thenReturn(TestDataBooks.generateBookList().get(0));
+        Mockito.when(categoryRepository.findNameByCategoryId(Mockito.any())).thenReturn("Literature");
+        List<BookDao> bookDaoList = shoppingCartService.retrieveCartByUserId(userId);
+
+        Assertions.assertEquals(1, bookDaoList.size());
     }
 }

@@ -4,6 +4,7 @@ import com.zand.bookstore.common.CommonResponse;
 import com.zand.bookstore.common.Constants;
 import com.zand.bookstore.dao.BookDao;
 import com.zand.bookstore.entity.Book;
+import com.zand.bookstore.entity.ShoppingCart;
 import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
@@ -93,5 +94,16 @@ public class TestDataBooks {
             index++;
         }
         return totalAmount;
+    }
+
+    public static List<ShoppingCart> getTestShoppingCartData() {
+        List<ShoppingCart> shoppingCartList = new ArrayList<>();
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setBookId("E38-0542-9802");
+        shoppingCart.setUserId(bookIds[0]);
+        shoppingCart.setUserId("404249022");
+        shoppingCart.setQuantity(3);
+        shoppingCartList.add(shoppingCart);
+        return shoppingCartList;
     }
 }
