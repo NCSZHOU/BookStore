@@ -11,6 +11,9 @@ import org.mapstruct.factory.Mappers;
 public interface BookMapper {
     BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
 
-    @Mappings(@Mapping(target = "categoryId",ignore = true))
+    @Mappings(@Mapping(target = "categoryId", ignore = true))
     Book convertBookDaoToBook(BookDao bookDao);
+
+    @Mappings(@Mapping(target = "category", ignore = true))
+    BookDao convertBookToBookDao(Book book);
 }

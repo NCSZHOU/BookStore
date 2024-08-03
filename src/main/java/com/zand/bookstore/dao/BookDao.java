@@ -8,6 +8,10 @@ import lombok.Data;
 
 @Data
 public class BookDao {
+    @ApiModelProperty(value = "bookId", required = true, example = "EM-352-35B-001")
+    @NotEmpty(message = "Title cannot be empty!")
+    private String bookId;
+
     @ApiModelProperty(value = "title", required = true, example = "title")
     @NotEmpty(message = "Title cannot be empty!")
     private String title;
@@ -28,8 +32,8 @@ public class BookDao {
     @ApiModelProperty(value = "isAvailable", example = "true")
     private boolean isAvailable = true;
 
-    @ApiModelProperty(value = "stock", required = true, example = "book stock")
-    @NotEmpty(message = "Stock cannot be empty!")
-    @Min(value = 1, message = "Stock number should bigger than 0")
-    private int stock;
+    @ApiModelProperty(value = "quantity", required = true, example = "book quantity")
+    @NotEmpty(message = "Quantity cannot be empty!")
+    @Min(value = 1, message = "Quantity should bigger than 0")
+    private int quantity;
 }

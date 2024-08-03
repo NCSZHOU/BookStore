@@ -1,6 +1,9 @@
 package com.zand.bookstore.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
@@ -8,12 +11,11 @@ import lombok.Data;
 @Table(name = "BOOK")
 public class Book {
     /**
-     * Id is the primary key and unique indicator for table Book
+     * id is the primary key and unique indicator for table Book
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BOOK_ID", nullable = false)
-    private Long id;
+    private String bookId;
 
     /**
      * Book name
@@ -31,7 +33,7 @@ public class Book {
      * Book's category, Example: Literature
      */
     @Column(name = "CATEGORY_ID")
-    private int categoryId;
+    private Long categoryId;
 
     /**
      * Price of book, two decimal places. Example: 12.55
@@ -46,8 +48,8 @@ public class Book {
     private boolean isAvailable = true;
 
     /**
-     * The stock of book
+     * The quantity of book
      */
-    @Column(name = "BOOK_STOCK")
-    private int stock;
+    @Column(name = "QUANTITY")
+    private int quantity;
 }

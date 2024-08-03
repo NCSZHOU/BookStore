@@ -3,12 +3,12 @@ package com.zand.bookstore.common;
 import lombok.Data;
 
 @Data
-public class CommonResult<T> {
+public class CommonResponse<T> {
     private int code;
     private String msg;
     private T data;
 
-    public CommonResult() {
+    public CommonResponse() {
     }
 
     /**
@@ -17,8 +17,8 @@ public class CommonResult<T> {
      * @param msg, response code, data
      * @return
      */
-    public static CommonResult response(int responseCode, String msg, Object data) {
-        CommonResult result = new CommonResult();
+    public static CommonResponse response(int responseCode, String msg, Object data) {
+        CommonResponse result = new CommonResponse();
         result.setCode(responseCode);
         result.setMsg(msg);
         result.setData(data);
