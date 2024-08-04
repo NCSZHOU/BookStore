@@ -11,7 +11,7 @@ management.
 - [Table of contents](#table-of-contents)
 - [Usage](#usage)
 - [Development](#development)
-- [Test](#contribute)
+- [Test](#test)
 
 # Usage  
   
