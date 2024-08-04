@@ -14,6 +14,7 @@ management. The related technical tool:
 - [Usage](#usage)
 - [Development](#development)
 - [Test](#test)
+- [Design](#design)
 
 # Usage  
   Provide restful apis for book management and shopping-cart management, in this system:   
@@ -54,4 +55,9 @@ _You can do_:
   **Integration Test**    
 
    BookManagement test: [testCase-BookManagement](https://github.com/NCSZHOU/ZandBookStore/blob/main/src/main/resources/testcase/test-case-BookManagement.doc)  
-   Shopping-cart management test: [testCase-ShoppingCartManagement](https://github.com/NCSZHOU/ZandBookStore/blob/main/src/main/resources/testcase/test-case-ShoppingCart.doc)  
+   Shopping-cart management test: [testCase-ShoppingCartManagement](https://github.com/NCSZHOU/ZandBookStore/blob/main/src/main/resources/testcase/test-case-ShoppingCart.doc)
+
+  
+# Design  
+   
+   [Sequence Diagram](https://github.com/NCSZHOU/BookStore/blob/main/Boo%20Store%20Api_Sequence_Diagram.pptx)
