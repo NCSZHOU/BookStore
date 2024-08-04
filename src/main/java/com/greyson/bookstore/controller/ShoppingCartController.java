@@ -1,6 +1,7 @@
 package com.greyson.bookstore.controller;
 
 import com.greyson.bookstore.common.CommonResponse;
+import com.greyson.bookstore.common.Constants;
 import com.greyson.bookstore.dao.BookDao;
 import com.greyson.bookstore.service.ShoppingCartService;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
@@ -87,4 +88,9 @@ public class ShoppingCartController {
         return shoppingCartService.checkout(userId, bookList);
     }
 
+    @GetMapping("/health-check")
+    public String healthCheck() {
+        log.info("Start to do health check .");
+        return String.format(Constants.SERVER_WORKS_FINE, "ShoppingCartController");
+    }
 }

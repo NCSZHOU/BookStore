@@ -61,7 +61,7 @@ class ShoppingCartControllerTest {
     }
 
     @Test
-    void checkout() throws Exception {
+    void whenCheckout_thenReturnTotalAmount() throws Exception {
         double totalAmount = TestDataBooks.getTestBooksTotalAmount();
         Mockito.when(svc.checkout(Mockito.any(), Mockito.anyList())).thenReturn(TestDataBooks.generateSuccessResp(totalAmount));
 
@@ -78,5 +78,13 @@ class ShoppingCartControllerTest {
                 .getResponse();
 
         Assertions.assertTrue(response.getContentAsString().contains(String.valueOf(totalAmount)));
+    }
+
+    @Test
+    void whenHealthCheck_thenReturnHealthMessage() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/shopping-cart/health-check"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn()
+                .getResponse();
     }
 }
