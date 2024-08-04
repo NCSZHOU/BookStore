@@ -26,11 +26,14 @@ public class BookStoreService {
         log.info("Start to save book");
         List<Book> bookList = new ArrayList<>();
         int failed = 0;
+        List<String> failedBookIds = new ArrayList<>();
         for (BookDao bookDao : bookDaoList) {
             Book book = BookMapper.INSTANCE.convertBookDaoToBook(bookDao);
             if (categoryRepository.findIdCountByName(bookDao.getCategory()) < 1) {
                 log.error("There is no category : {} for book + [{}]", bookDao.getCategory(), bookDao.getTitle());
                 failed++;
+                if(failedBookIds.isEmpty()) failedBookIds.add(Constants.ADD_FAILED_BOOK_ID);
+                failedBookIds.add(bookDao.getBookId());
                 continue;
             }
 
@@ -44,12 +47,13 @@ public class BookStoreService {
             bookList.add(book);
         }
         bookRepository.saveAll(bookList);
+
         String message = String.format(Constants.SAVE_RESULT_MESSAGE, bookDaoList.size(), failed);
         log.info(message);
         return CommonResponse.response(
                 HttpStatus.OK.value(),
                 message,
-                null);
+                failedBookIds);
     }
 
     public List<Book> retrieveAllBooks() {

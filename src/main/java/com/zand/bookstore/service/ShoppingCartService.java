@@ -6,6 +6,7 @@ import com.zand.bookstore.config.BookMapper;
 import com.zand.bookstore.dao.BookDao;
 import com.zand.bookstore.entity.Book;
 import com.zand.bookstore.entity.ShoppingCart;
+import com.zand.bookstore.exception.BookStockException;
 import com.zand.bookstore.repository.BookRepository;
 import com.zand.bookstore.repository.CategoryRepository;
 import com.zand.bookstore.repository.ShoppingCartRepository;
@@ -41,16 +42,14 @@ public class ShoppingCartService {
         return CommonResponse.response(HttpStatus.OK.value(), HttpStatus.OK.toString(), bookList.size());
     }
 
-    public CommonResponse checkout(String userId, List<BookDao> bookDaoList) {
+    public CommonResponse checkout(String userId, List<BookDao> bookDaoList) throws Exception {
         log.error("Start to checkout shopping cart .");
         double result = 0;
         for (BookDao bookDao : bookDaoList) {
             if (!hasEnoughStock(bookDao.getQuantity(), bookDao.getBookId())) {
-                log.error("Stock of book [" + bookDao.getTitle() + "] is not enough.");
-                return CommonResponse.response(
-                        HttpStatus.FORBIDDEN.value(),
-                        Constants.INDICATOR_BOOK_START + bookDao.getTitle() + Constants.INDICATOR_BOOK_END + Constants.NOT_ENOUGH_STOCK,
-                        0);
+                String message = Constants.INDICATOR_BOOK_START + bookDao.getTitle() + Constants.INDICATOR_BOOK_END + Constants.NOT_ENOUGH_STOCK;
+                log.error(message);
+                throw new BookStockException(message);
             }
             result += bookDao.getPrice() * bookDao.getQuantity();
         }

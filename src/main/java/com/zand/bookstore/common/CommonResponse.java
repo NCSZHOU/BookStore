@@ -1,15 +1,14 @@
 package com.zand.bookstore.common;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class CommonResponse<T> {
     private int code;
     private String msg;
     private T data;
-
-    public CommonResponse() {
-    }
 
     /**
      * response
