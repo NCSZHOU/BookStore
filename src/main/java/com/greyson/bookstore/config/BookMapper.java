@@ -14,7 +14,7 @@ public interface BookMapper {
      */
     BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
 
-    /**,ignore filed : category
+    /**
      * Convert BookDao to Book ,ignore filed : category
      * @param bookDao
      * @return
@@ -22,7 +22,7 @@ public interface BookMapper {
     @Mappings(@Mapping(target = "categoryId", ignore = true))
     Book convertBookDaoToBook(BookDao bookDao);
 
-    /**,ignore filed : category
+    /**
      * Convert Book to BookDao ,ignore filed : category
      * @param book
      * @return
