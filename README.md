@@ -37,7 +37,7 @@ _You can do_:
     Git bash  
 
    **Steps**
-   1. [Download project](https://github.com/NCSZHOU/ZandBookStore) by Git Bash
+   1. [Download project](https://github.com/NCSZHOU/BookStore) by Git Bash
    2. Open the Command Prompt, and go to the project folder and input: "mvn clean install"
    3. Go to folder target, and type the command : "java -jar Bookstore-0.0.1-SNAPSHOT.jar"
    4. In browser, open http://localhost:8082/swagger-ui/index.html, you can check the apis detail
@@ -50,12 +50,12 @@ _You can do_:
 # Test  
   
   **Unit Test**  
-  At classpath:/test/java/com.zand.bookstore, we can see all the unit tests  
+  At classpath:/test/java/com.greyson.bookstore, we can see all the unit tests  
     
   **Integration Test**    
 
-   BookManagement test: [testCase-BookManagement](https://github.com/NCSZHOU/ZandBookStore/blob/main/src/main/resources/testcase/test-case-BookManagement.doc)  
-   Shopping-cart management test: [testCase-ShoppingCartManagement](https://github.com/NCSZHOU/ZandBookStore/blob/main/src/main/resources/testcase/test-case-ShoppingCart.doc)
+   BookManagement test: [testCase-BookManagement](https://github.com/NCSZHOU/BookStore/blob/main/src/main/resources/testcase/test-case-BookManagement.doc)  
+   Shopping-cart management test: [testCase-ShoppingCartManagement](https://github.com/NCSZHOU/BookStore/blob/main/src/main/resources/testcase/test-case-ShoppingCart.doc)
 
   
 # Document  
