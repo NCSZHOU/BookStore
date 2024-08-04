@@ -1,5 +1,6 @@
 package com.greyson.bookstore.controller;
 
+import com.greyson.bookstore.common.Constants;
 import com.greyson.bookstore.entity.Book;
 import com.greyson.bookstore.service.BookStoreService;
 import com.greyson.bookstore.common.CommonResponse;
@@ -62,5 +63,11 @@ public class BookStoreController {
     public CommonResponse addBooks(@RequestBody List<BookDao> bookDaoList) {
         log.info("Start to save book ...");
         return bookStoreService.saveBooks(bookDaoList);
+    }
+
+    @GetMapping("/health-check")
+    public String healthCheck() {
+        log.info("Start to do health check .");
+        return String.format(Constants.SERVER_WORKS_FINE, "BookStoreController");
     }
 }

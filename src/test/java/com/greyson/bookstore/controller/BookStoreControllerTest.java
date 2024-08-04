@@ -76,4 +76,12 @@ class BookStoreControllerTest {
         String message = String.format(Constants.SAVE_RESULT_MESSAGE, 0, 4);
         Assertions.assertTrue(response.getContentAsString().contains(message));
     }
+
+    @Test
+    void whenHealthCheck_thenReturnHealthMessage() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/book/health-check"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn()
+                .getResponse();
+    }
 }
