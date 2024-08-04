@@ -82,7 +82,7 @@ public class ShoppingCartController {
                     )}
     )
     @PostMapping("/{userId}/checkout")
-    public CommonResponse checkout(@PathVariable("userId") String userId, @RequestBody List<BookDao> bookList) {
+    public CommonResponse checkout(@PathVariable("userId") String userId, @RequestBody List<BookDao> bookList) throws Exception {
         log.info("Start to checkout for shopping cart");
         return shoppingCartService.checkout(userId, bookList);
     }

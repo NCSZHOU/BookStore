@@ -50,7 +50,7 @@ class ShoppingCartServiceTest {
     }
 
     @Test
-    void whenCheckout_thenReturnTotalAmount() {
+    void whenCheckout_thenReturnTotalAmount() throws Exception {
         double totalAmount = TestDataBooks.getTestBooksTotalAmount();
         Mockito.when(bookRepository.findBookQuantityByBookId(Mockito.any())).thenReturn("10000000");
         CommonResponse commonResponse = shoppingCartService.checkout(userId, TestDataBooks.generateBookDaoList());
