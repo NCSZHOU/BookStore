@@ -7,6 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
+    /**
+     * Define basic information for api page displaying
+     * @return
+     */
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()

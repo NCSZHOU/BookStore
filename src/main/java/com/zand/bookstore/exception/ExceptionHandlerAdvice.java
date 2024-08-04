@@ -12,16 +12,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 @RestControllerAdvice
 public class ExceptionHandlerAdvice {
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public CommonResponse<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
+    @ExceptionHandler(BookStockException.class)
+    public CommonResponse<Object> handleValidationExceptions(BookStockException ex) {
         log.error("[handleValidationExceptions]", ex);
-        StringBuilder sb = new StringBuilder();
-        ex.getBindingResult().getAllErrors().forEach(objectError -> {
-            String filedName = ((org.springframework.validation.FieldError) objectError).getField();
-            String errorMessage = objectError.getDefaultMessage();
-            sb.append(filedName).append(":").append(errorMessage).append(";");
-        });
-        return CommonResponse.response(HttpStatus.BAD_REQUEST.value(), sb.toString(), null);
+        return CommonResponse.response(HttpStatus.BAD_REQUEST.value(), ex.getMessage(), null);
     }
 
     @ExceptionHandler(value = Exception.class)
