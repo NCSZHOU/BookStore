@@ -1,15 +1,15 @@
-# Zand Book Store
+# Book Store
 
-This a simple book store backend project for Zand company test, do not use it for other commercial purposes.
+This a simple book store backend project for personal usage, do not use it for other commercial purposes.
 
 The project contains REST APIs of an online bookstore, there are two mainly functions: Book Management and Shopping cart
 management. The related technical tool:  
-  - APIs detail: swagger3.0(https://<your address>/swagger-ui.html)
-  - Database: H2 database(https://<your address>/h2)
+  - APIs detail: swagger3.0(https://(your address)/swagger-ui.html)
+  - Database: H2 database(https://(your address)/h2)
 
 # Table of contents
 
-- [Zand Book Store](#nsfw-filter)
+- [Book Store](#nsfw-filter)
 - [Table of contents](#table-of-contents)
 - [Usage](#usage)
 - [Development](#development)
