@@ -15,11 +15,13 @@ management.
 
 # Usage  
   
-_You can do_:  
-  Book Management:  
+_You can do_:   
+  
+  **Book Management:**  
     1. Retrieve books: it will retrieve all the available books in our system  
-    2. Add books: you can add one or more books to our system   
-  Shopping-Cart Management:   
+    2. Add books: you can add one or more books to our system  
+  
+  **Shopping-Cart Management:**   
     1. Retrieve shopping-cart contents: you can retrieve all the contents of shopping-cart by your userId  
     2. Save shopping-cart contents   
     3. Checkout: you can do checkout for your shopping cart, then it will calculate the books' total amount and return it back, meanwhile our system will remove all the contents of you shopping-cart and do the stock management  
