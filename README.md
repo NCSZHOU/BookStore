@@ -26,8 +26,8 @@ _You can do_:
     2. Save shopping-cart contents   
     3. Checkout: you can do checkout for your shopping cart, then it will calculate the books' total amount and return it back, meanwhile our system will remove all the contents of you shopping-cart and do the stock management  
   
-# Development  
-   This document will take Windows System as example:  
+# Development    
+   This document will take Windows System as example:    
    **Prerequisite**:  
     JDK 17 or higher  
     maven 3.6.3 or higher  
@@ -44,9 +44,9 @@ _You can do_:
        User Name: root
        Password: syc123
 
-# Test
-
-  **Unit Test**
-  At classpath:/test/java/com.zand.bookstore, we can see all the unit tests
+# Test  
   
-  **Integration Test**
+  **Unit Test**  
+  At classpath:/test/java/com.zand.bookstore, we can see all the unit tests  
+    
+  **Integration Test**  
