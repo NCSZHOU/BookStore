@@ -1,12 +1,22 @@
 package com.zand.bookstore.repository;
 
-import com.zand.bookstore.entity.Book;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.zand.bookstore.entity.ShoppingCart;
+import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface BookRepository extends JpaRepository<Book, Integer> {
-    @Query("select book from Book book where book.isAvailable=true and book.stock > 0")
-    List<Book> findAllAvailableBooks();
+@Repository
+public interface ShoppingCartRepository extends CrudRepository<ShoppingCart, Integer> {
+    @Query("select sc from ShoppingCart sc where sc.userId = :userId")
+    List<ShoppingCart> findAllByUserId(@Param("userId") String userId);
+
+    @Modifying
+    @Transactional
+    @Query("delete from ShoppingCart sc where sc.userId = :userId")
+    int deleteGoodsByUserId(@Param("userId") String userId);
 }

@@ -1,12 +1,11 @@
 package com.zand.bookstore.controller;
 
+import com.zand.bookstore.common.CommonResponse;
 import com.zand.bookstore.dao.BookDao;
 import com.zand.bookstore.entity.Book;
-import com.zand.bookstore.entity.BookSearchRequestVO;
 import com.zand.bookstore.service.BookStoreService;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,12 +20,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/book")
 @Tag(name = "BookStoreControllerApi", description = "Book Store controller api",
-     externalDocs = @ExternalDocumentation(description = "Book store related apis, support retrieve/add books", url = ""))
+        externalDocs = @ExternalDocumentation(description = "Book store related apis, support retrieve/add books", url = ""))
 public class BookStoreController {
     private final BookStoreService bookStoreService;
 
     @Operation(summary = "Retrieve all available books ",
-            description = "Retrieve all available books, the book's status is available and the stock of book bigger than 0",
+            description = "Retrieve all available books, the book's status is available and the quantity of book bigger than 0",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -45,9 +44,8 @@ public class BookStoreController {
         return bookStoreService.retrieveAllBooks();
     }
 
-    @Operation(summary = "add a new book",
-            description = "add a new book",
-            parameters = {@Parameter(name = "Book",required = true)},
+    @Operation(summary = "add books",
+            description = "add books",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -61,8 +59,8 @@ public class BookStoreController {
                     )}
     )
     @PostMapping("/add")
-    public void addBooks(@RequestBody BookDao book) {
+    public CommonResponse addBooks(@RequestBody List<BookDao> bookDaoList) {
         log.info("Start to save book ...");
-        bookStoreService.saveBook(book);
+        return bookStoreService.saveBooks(bookDaoList);
     }
 }
