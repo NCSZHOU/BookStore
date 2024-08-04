@@ -49,4 +49,6 @@ _You can do_:
   **Unit Test**  
   At classpath:/test/java/com.zand.bookstore, we can see all the unit tests  
     
-  **Integration Test**  
+  **Integration Test**   
+   BookManagement test: 
+   Shopping-cart management test: 
